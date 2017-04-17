@@ -70,12 +70,12 @@ A verb **in infinitive form** describing what happened to the resource (in case 
 
 ### Status (optional)
 
-A word describing the status of the previous event/action name. Allowed values are:
+A word describing the status of a previous action. **When used, the type of the topic MUST be `event`.** Allowed values are:
 
-- `done`: The event/action has finished.
 - `queued`: The event/action has been queued.
 - `succeed`: The event/action has been handled/executed successfully.
 - `failed`: The event/action has failed.
+- `done`: The event/action has finished.
 
 ###### Examples:
 
@@ -86,13 +86,13 @@ A word describing the status of the previous event/action name. Allowed values a
 `hitch`.`email`.`1`.`0`.`action`.`user`.`welcome`.`send`
 
 3. But the email gets queued, so the email service sends a message to:
-`hitch`.`email`.`1`.`0`.`action`.`user`.`welcome`.`send`.`queued`
+`hitch`.`email`.`1`.`0`.`event`.`user`.`welcome`.`send`.`queued`
 
 4. The email gets finally delivered and the email service sends messages to:
-   - `hitch`.`email`.`1`.`0`.`action`.`user`.`welcome`.`send`.`succeed`
-   - `hitch`.`email`.`1`.`0`.`action`.`user`.`welcome`.`send`.`done`
+   - `hitch`.`email`.`1`.`0`.`event`.`user`.`welcome`.`send`.`succeed`
+   - `hitch`.`email`.`1`.`0`.`event`.`user`.`welcome`.`send`.`done`
 5. Or, the recipient doesn't exist, and the email service sends messages to:
-   - `hitch`.`email`.`1`.`0`.`action`.`user`.`welcome`.`send`.`failed`
-   - `hitch`.`email`.`1`.`0`.`action`.`user`.`welcome`.`send`.`done`
+   - `hitch`.`email`.`1`.`0`.`event`.`user`.`welcome`.`send`.`failed`
+   - `hitch`.`email`.`1`.`0`.`event`.`user`.`welcome`.`send`.`done`
 6. The user sign up process has been completed so the accounts service sends:
 `hitch`.`accounts`.`1`.`0`.`event`.`user`.`signup`.`done`
