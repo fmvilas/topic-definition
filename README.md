@@ -46,7 +46,7 @@ It contains the type of the message, e.g. *it is an `action` or an `event`*. Thi
 
 `hitch`.`accounts`.`1`.`0`.**`event`**.`user`.`signup`
 
-`hitch`.`email`.`1`.`0`.**`action`**.`user`.`signup`.`send`
+`hitch`.`email`.`1`.`0`.**`action`**.`user`.`welcome`.`send`
 
 ### Resources and sub-resources
 
