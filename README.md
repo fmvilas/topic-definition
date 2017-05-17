@@ -72,10 +72,10 @@ A verb **in infinitive form** describing what happened to the resource (in case 
 
 A word describing the status of a previous action. **When used, the type of the topic MUST be `event`.** Allowed values are:
 
-- `queued`: The event/action has been queued.
-- `succeed`: The event/action has been handled/executed successfully.
-- `failed`: The event/action has failed.
-- `done`: The event/action has finished.
+- `queued`: The event has been queued.
+- `succeed`: The event has been handled/executed successfully.
+- `failed`: The event has failed.
+- `done`: The event has finished.
 
 ###### Examples:
 
