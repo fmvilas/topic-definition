@@ -18,7 +18,7 @@ The name of the organization or company.
 
 ###### Example:
 
-**`hitch`**.`accounts`.`1`.`0`.`event`.`user`.`signup`
+**`hitch`**.`accounts`.`1`.`event`.`user`.`signup`
 
 ### Service
 
@@ -26,15 +26,15 @@ The service or department in charge of managing the message.
 
 ###### Example:
 
-`hitch`.**`accounts`**.`1`.`0`.`event`.`user`.`signup`
+`hitch`.**`accounts`**.`1`.`event`.`user`.`signup`
 
 ### Message version
 
-The version of the message for the given service. We use a variation of semantic versioning, with only the **major** and **minor** numbers. This way, a service can safely listen/publish to all `X.*` versions because the message format does not contain any breaking changes.
+The version of the message for the given service. The version of a topic should stay unchanged while changes in the messages are backwards compatible. We originally used a variation of semantic versioning, with only the **major** and **minor** numbers but it proved too fine-grained and it caused maintaining too many versions of each topic.
 
 ###### Example:
 
-`hitch`.`accounts`.**`1`.`0`**.`event`.`user`.`signup`
+`hitch`.`accounts`.**`1`**.`event`.`user`.`signup`
 
 > Note: This version number is NOT related to your service or program version.
 
@@ -44,9 +44,9 @@ It contains the type of the message, e.g. *it is an `action` or an `event`*. Thi
 
 ###### Example:
 
-`hitch`.`accounts`.`1`.`0`.**`event`**.`user`.`signup`
+`hitch`.`accounts`.`1`.**`event`**.`user`.`signup`
 
-`hitch`.`email`.`1`.`0`.**`action`**.`user`.`welcome`.`send`
+`hitch`.`email`.`1`.**`action`**.`user`.`welcome`.`send`
 
 ### Resources and sub-resources
 
@@ -54,9 +54,9 @@ A word (or words) describing the resource the message refers to. For instance, i
 
 ###### Example:
 
-`hitch`.`accounts`.`1`.`0`.`event`.**`user`**.`signup`
+`hitch`.`accounts`.`1`.`event`.**`user`**.`signup`
 
-`hitch`.`email`.`1`.`0`.`action`.**`user`.`welcome`**.`send`
+`hitch`.`email`.`1`.`action`.**`user`.`welcome`**.`send`
 
 ### Event/Action name
 
@@ -64,9 +64,9 @@ A verb **in infinitive form** describing what happened to the resource (in case 
 
 ###### Example:
 
-`hitch`.`accounts`.`1`.`0`.`event`.`user`.**`signup`**
+`hitch`.`accounts`.`1`.`event`.`user`.**`signup`**
 
-`hitch`.`email`.`1`.`0`.`action`.`user`.`welcome`.**`send`**
+`hitch`.`email`.`1`.`action`.`user`.`welcome`.**`send`**
 
 ### Status (optional)
 
@@ -80,19 +80,19 @@ A word describing the status of a previous action. **When used, the type of the 
 ###### Examples:
 
 1. A user has just signed up:
-`hitch`.`accounts`.`1`.`0`.`event`.`user`.`signup`
+`hitch`.`accounts`.`1`.`event`.`user`.`signup`
 
 2. We send a welcome email:
-`hitch`.`email`.`1`.`0`.`action`.`user`.`welcome`.`send`
+`hitch`.`email`.`1`.`action`.`user`.`welcome`.`send`
 
 3. But the email gets queued, so the email service sends a message to:
-`hitch`.`email`.`1`.`0`.`event`.`user`.`welcome`.`send`.`queued`
+`hitch`.`email`.`1`.`event`.`user`.`welcome`.`send`.`queued`
 
 4. The email gets finally delivered and the email service sends messages to:
-   - `hitch`.`email`.`1`.`0`.`event`.`user`.`welcome`.`send`.`succeed`
-   - `hitch`.`email`.`1`.`0`.`event`.`user`.`welcome`.`send`.`done`
+   - `hitch`.`email`.`1`.`event`.`user`.`welcome`.`send`.`succeed`
+   - `hitch`.`email`.`1`.`event`.`user`.`welcome`.`send`.`done`
 5. Or, the recipient doesn't exist, and the email service sends messages to:
-   - `hitch`.`email`.`1`.`0`.`event`.`user`.`welcome`.`send`.`failed`
-   - `hitch`.`email`.`1`.`0`.`event`.`user`.`welcome`.`send`.`done`
+   - `hitch`.`email`.`1`.`event`.`user`.`welcome`.`send`.`failed`
+   - `hitch`.`email`.`1`.`event`.`user`.`welcome`.`send`.`done`
 6. The user sign up process has been completed so the accounts service sends:
-`hitch`.`accounts`.`1`.`0`.`event`.`user`.`signup`.`done`
+`hitch`.`accounts`.`1`.`event`.`user`.`signup`.`done`
