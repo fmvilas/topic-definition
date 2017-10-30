@@ -91,7 +91,7 @@ A word describing the status of a previous **command**. When used, **the type of
 `hitch`.`email`.`1`.`event`.`user`.`welcome`.`send`.`queued`
 
 4. The email gets finally delivered and the email service sends messages to:
-   - `hitch`.`email`.`1`.`event`.`user`.`welcome`.`send`.`succeed`
+   - `hitch`.`email`.`1`.`event`.`user`.`welcome`.`send`.`succeeded`
    - `hitch`.`email`.`1`.`event`.`user`.`welcome`.`send`.`done`
 5. Or, the recipient doesn't exist, and the email service sends messages to:
    - `hitch`.`email`.`1`.`event`.`user`.`welcome`.`send`.`failed`
