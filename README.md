@@ -72,10 +72,10 @@ In case message type is `command`, this should be a verb **in infinitive form** 
 
 ### Status (optional)
 
-A word describing the status of a previous **command**. When used, **the type of the topic MUST be `command`.** Allowed values are:
+A word describing the status of a previous **command**. When used, **the type of the topic MUST be `event`.** Allowed values are:
 
 - `queued`: The command has been queued.
-- `succeed`: The command has been handled/executed successfully.
+- `succeeded`: The command has been handled/executed successfully.
 - `failed`: The command has failed.
 - `done`: The command has finished.
 
