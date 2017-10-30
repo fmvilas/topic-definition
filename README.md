@@ -46,7 +46,7 @@ It contains the type of the message, e.g., *is it a `command` or an `event`?*. T
 
 `hitch`.`accounts`.`1`.**`event`**.`user`.`signedup`
 
-`hitch`.`email`.`1`.**`action`**.`user`.`welcome`.`send`
+`hitch`.`email`.`1`.**`command`**.`user`.`welcome`.`send`
 
 ### Resources and sub-resources
 
@@ -56,28 +56,28 @@ A word (or words) describing the resource the message refers to. For instance, i
 
 `hitch`.`accounts`.`1`.`event`.**`user`**.`signedup`
 
-`hitch`.`email`.`1`.`action`.**`user`.`welcome`**.`send`
+`hitch`.`email`.`1`.`command`.**`user`.`welcome`**.`send`
 
-### Event/Action name
+### Event/Command name
 
-In case message type is `command`, this should be a verb **in past tense** describing what happened to the resource.
+In case message type is `event`, this should be a verb **in past tense** describing what happened to the resource.
 
-In case message type is `action`, this should be a verb **in infinitive form** describing what operation you want to perform.
+In case message type is `command`, this should be a verb **in infinitive form** describing what operation you want to perform.
 
 ###### Example:
 
 `hitch`.`accounts`.`1`.`event`.`user`.**`signedup`**
 
-`hitch`.`email`.`1`.`action`.`user`.`welcome`.**`send`**
+`hitch`.`email`.`1`.`command`.`user`.`welcome`.**`send`**
 
 ### Status (optional)
 
-A word describing the status of a previous **action**. When used, **the type of the topic MUST be `command`.** Allowed values are:
+A word describing the status of a previous **command**. When used, **the type of the topic MUST be `command`.** Allowed values are:
 
-- `queued`: The action has been queued.
-- `succeed`: The action has been handled/executed successfully.
-- `failed`: The action has failed.
-- `done`: The action has finished.
+- `queued`: The command has been queued.
+- `succeed`: The command has been handled/executed successfully.
+- `failed`: The command has failed.
+- `done`: The command has finished.
 
 ###### Examples:
 
@@ -85,7 +85,7 @@ A word describing the status of a previous **action**. When used, **the type of 
 `hitch`.`accounts`.`1`.`event`.`user`.`signedup`
 
 2. We send a welcome email:
-`hitch`.`email`.`1`.`action`.`user`.`welcome`.`send`
+`hitch`.`email`.`1`.`command`.`user`.`welcome`.`send`
 
 3. But the email gets queued, so the email service sends a message to:
 `hitch`.`email`.`1`.`event`.`user`.`welcome`.`send`.`queued`
