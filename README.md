@@ -18,33 +18,33 @@ The name of the organization or company.
 
 ###### Example:
 
-**`hitch`**.`accounts`.`1`.`event`.`user`.`signup`
+**`hitch`**.`accounts`.`1`.`event`.`user`.`signedup`
 
-### Service
+### Service/Team/Department
 
-The service or department in charge of managing the message.
+The service, team or department in charge of managing the message.
 
 ###### Example:
 
-`hitch`.**`accounts`**.`1`.`event`.`user`.`signup`
+`hitch`.**`accounts`**.`1`.`event`.`user`.`signedup`
 
 ### Message version
 
-The version of the message for the given service. The version of a topic should stay unchanged while changes in the messages are backwards compatible. We originally used a variation of semantic versioning, with only the **major** and **minor** numbers but it proved too fine-grained and it caused maintaining too many versions of each topic.
+The version of the message for the given service. This version number should remain the same unless changes in the messages are NOT backward compatible.
 
 ###### Example:
 
-`hitch`.`accounts`.**`1`**.`event`.`user`.`signup`
+`hitch`.`accounts`.**`1`**.`event`.`user`.`signedup`
 
 > Note: This version number is NOT related to your service or program version.
 
 ### Message type
 
-It contains the type of the message, e.g. *it is an `action` or an `event`*. This value should always be `event` unless you're trying to explicitly execute an action in the service, i.e. when using RPC.
+It contains the type of the message, e.g., *is it a `command` or an `event`?*. This value should always be `event` unless you're trying to explicitly execute a command in another service, i.e., when using RPC.
 
 ###### Example:
 
-`hitch`.`accounts`.`1`.**`event`**.`user`.`signup`
+`hitch`.`accounts`.`1`.**`event`**.`user`.`signedup`
 
 `hitch`.`email`.`1`.**`action`**.`user`.`welcome`.`send`
 
@@ -54,33 +54,35 @@ A word (or words) describing the resource the message refers to. For instance, i
 
 ###### Example:
 
-`hitch`.`accounts`.`1`.`event`.**`user`**.`signup`
+`hitch`.`accounts`.`1`.`event`.**`user`**.`signedup`
 
 `hitch`.`email`.`1`.`action`.**`user`.`welcome`**.`send`
 
 ### Event/Action name
 
-A verb **in infinitive form** describing what happened to the resource (in case of event) or what operation you want to perform (in case of action).
+In case message type is `command`, this should be a verb **in past tense** describing what happened to the resource.
+
+In case message type is `action`, this should be a verb **in infinitive form** describing what operation you want to perform.
 
 ###### Example:
 
-`hitch`.`accounts`.`1`.`event`.`user`.**`signup`**
+`hitch`.`accounts`.`1`.`event`.`user`.**`signedup`**
 
 `hitch`.`email`.`1`.`action`.`user`.`welcome`.**`send`**
 
 ### Status (optional)
 
-A word describing the status of a previous action. **When used, the type of the topic MUST be `event`.** Allowed values are:
+A word describing the status of a previous **action**. When used, **the type of the topic MUST be `command`.** Allowed values are:
 
-- `queued`: The event has been queued.
-- `succeed`: The event has been handled/executed successfully.
-- `failed`: The event has failed.
-- `done`: The event has finished.
+- `queued`: The action has been queued.
+- `succeed`: The action has been handled/executed successfully.
+- `failed`: The action has failed.
+- `done`: The action has finished.
 
 ###### Examples:
 
 1. A user has just signed up:
-`hitch`.`accounts`.`1`.`event`.`user`.`signup`
+`hitch`.`accounts`.`1`.`event`.`user`.`signedup`
 
 2. We send a welcome email:
 `hitch`.`email`.`1`.`action`.`user`.`welcome`.`send`
